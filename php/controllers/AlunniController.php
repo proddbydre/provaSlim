@@ -5,8 +5,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AlunniController
 {
   public function index(Request $request, Response $response, $args){
+    $queryParams = $request -> getQueryParams();
+
+    $search = $queryParams['search'] ?? null;
+    $sortCol = $queryParams['sortCol'] ?? null;
+    $sort = $queryParams['sort'] ?? null;
+
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
-    $result = $mysqli_connection->query("SELECT * FROM alunni");
+    $result = $mysqli_connection->query("SELECT * FROM alunni WHERE nome LIKE '$search%' ORDER BY '$sortCol' '$sort'");
     $results = $result->fetch_all(MYSQLI_ASSOC);
 
     $response->getBody()->write(json_encode($results));

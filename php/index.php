@@ -19,6 +19,9 @@ $app->put("/alunni/{id}", "AlunniController:updateOne");
 // Per eliminare un alunno esistente: curl -X DELETE localhost:8080/alunni/3 
 $app->delete("/alunni/{id}", "AlunniController:deleteOne");
 
+
+
+
 $app->run();
 
 ?>
