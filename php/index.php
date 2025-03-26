@@ -10,7 +10,7 @@ $app = AppFactory::create();
 $app->get('/alunni', "AlunniController:index");
 $app->get("/alunni/{id}", "AlunniController:getOne");
 
-// Per creare un nuovo alunno: curl -X POST localhost:8080/alunni -d '{"nome":"aaa","cognome":"bbb"}' -H "Content-Type: application/json"
+// Per creare un nuovo alunno: curl -X POST localhost:8080/alunni -d '{"nome":"Young","cognome":"Thug","codiceFiscale":"FREEY00UNGTHUG"}' -H "Content-Type: application/json"
 $app->post("/alunni", "AlunniController:createOne");
 
 // Per aggiornare un alunno esistente: curl -X PUT localhost:8080/alunni/3 -d '{"nome":"Stefano","cognome":"il meglio"}' -H "Content-Type: application/json"
